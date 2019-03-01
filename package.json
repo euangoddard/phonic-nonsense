@@ -1,0 +1,23 @@
+{
+  "name": "phonic-nonsense",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html -d dist",
+    "deploy": "rm -rf dist && npm run build && echo phonic-nonsense.euans.space > dist/CNAME && gh-pages -d dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^2.0.1",
+    "parcel-bundler": "^1.11.0"
+  },
+  "dependencies": {
+    "@types/lodash-es": "^4.17.2",
+    "lodash-es": "^4.17.11",
+    "typescript": "^3.3.3333"
+  }
+}
