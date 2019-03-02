@@ -1,9 +1,15 @@
 import { buildWord } from './words';
+import { Shake } from './shake';
 
 (function() {
   updateWord();
 
   document.addEventListener('click', updateWord, false);
+
+  const shaker = new Shake();
+  shaker.start();
+
+  window.addEventListener('shake', updateWord, false);
 })();
 
 function updateWord(): void {
