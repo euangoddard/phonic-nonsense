@@ -12,13 +12,14 @@
   "author": "Euan Goddard",
   "license": "MIT",
   "devDependencies": {
+    "@types/lodash-es": "^4.17.2",
     "gh-pages": "^2.0.1",
     "parcel-bundler": "^1.11.0",
     "workbox-cli": "^4.0.0"
   },
   "dependencies": {
-    "@types/lodash-es": "^4.17.2",
     "lodash-es": "^4.17.11",
+    "tslib": "^1.9.3",
     "typescript": "^3.3.3333"
   }
 }
