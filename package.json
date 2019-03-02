@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html -d dist",
+    "build": "parcel build ./src/index.html -d dist --experimental-scope-hoisting",
     "deploy": "rm -rf dist && npm run build && echo phonic-nonsense.euans.space > dist/CNAME && gh-pages -d dist"
   },
   "keywords": [],

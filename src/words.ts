@@ -25,6 +25,7 @@ const START_SOUNDS: Strings = [
   'z',
   'ch',
   'qu',
+  '', // Some words can start with vowel sounds
 ];
 
 const MIDDLE_SOUNDS: Strings = [
