@@ -5,15 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html -d dist --experimental-scope-hoisting",
-    "deploy": "rm -rf dist && npm run build && echo phonic-nonsense.euans.space > dist/CNAME && gh-pages -d dist"
+    "build": "rm -rf dist && parcel build ./src/index.html -d dist --experimental-scope-hoisting && workbox injectManifest workbox-config.js",
+    "deploy": "npm run build && echo phonic-nonsense.euans.space > dist/CNAME && gh-pages -d dist"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Euan Goddard",
+  "license": "MIT",
   "devDependencies": {
     "gh-pages": "^2.0.1",
-    "parcel-bundler": "^1.11.0"
+    "parcel-bundler": "^1.11.0",
+    "workbox-cli": "^4.0.0"
   },
   "dependencies": {
     "@types/lodash-es": "^4.17.2",
