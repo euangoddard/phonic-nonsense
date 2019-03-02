@@ -6,8 +6,6 @@ import { debounce } from 'lodash-es';
 const RELEVANT_KEYBOARD_EVENTS: Strings = ['Space', 'Enter'];
 
 (function() {
-  updateWord();
-
   document.addEventListener('click', updateWord, false);
 
   const shaker = new Shake();
@@ -25,8 +23,14 @@ const RELEVANT_KEYBOARD_EVENTS: Strings = ['Space', 'Enter'];
 })();
 
 function updateWord(): void {
+  const intro = document.querySelector('p');
+  if (intro) {
+    intro.parentElement!.removeChild(intro);
+  }
+
   const word = buildWord();
   const element = document.querySelector('h1') as HTMLElement;
+  element.style.display = 'block';
   element.textContent = word;
 }
 

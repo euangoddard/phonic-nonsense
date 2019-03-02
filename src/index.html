@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>Phonic nonsense</title>
     <meta charset="utf-8" />
@@ -8,6 +9,7 @@
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="description" content="Generates nonsense phonetic words at random" />
     <link rel="stylesheet" href="./style.css" type="text/css" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
@@ -19,9 +21,10 @@
     <meta property="og:image" content="android-chrome-512x512.png" />
   </head>
   <body>
-    <h1>&mdash;</h1>
+    <p>Tap or shake for the next word</p>
+    <h1 style="display: none;">&mdash;</h1>
     <noscript>You need Javascript enabled to run this app</noscript>
-    <script src="index.ts"></script>
+    <script src="main.ts"></script>
     <script src="sw-register.ts"></script>
   </body>
 </html>
