@@ -1,7 +1,31 @@
 import { Strings } from './models';
 import { sample } from 'lodash-es';
 
-const START_SOUNDS: Strings = [
+const VOWELS: Strings = ['a', 'e', 'i', 'o', 'u'];
+
+const CONSONANTAL_DIGRAPHS: Strings = [
+  'bl',
+  'br',
+  'cl',
+  'cr',
+  'dr',
+  'fl',
+  'fr',
+  'gl',
+  'gr',
+  'pl',
+  'pr',
+  'sl',
+  'sm',
+  'sn',
+  'sp',
+  'st',
+  'sw',
+  'tr',
+  'tw',
+];
+
+const SIMPLE_SOUNDS: Strings = [
   'm',
   's',
   'd',
@@ -25,15 +49,16 @@ const START_SOUNDS: Strings = [
   'z',
   'ch',
   'qu',
+];
+
+const START_SOUNDS: Strings = [
+  ...SIMPLE_SOUNDS,
+  ...CONSONANTAL_DIGRAPHS,
   '', // Some words can start with vowel sounds
 ];
 
 const MIDDLE_SOUNDS: Strings = [
-  'a',
-  'i',
-  'o',
-  'u',
-  'e',
+  ...VOWELS,
   'ee',
   'igh',
   'oo',
@@ -53,8 +78,23 @@ const MIDDLE_SOUNDS: Strings = [
   'ew',
 ];
 
-const END_SOUNDS: Strings = [...START_SOUNDS, 'ss', 'll', 'ck', 'ng', 'nk', 'x'];
+const END_SOUNDS: Strings = [...SIMPLE_SOUNDS, 'ss', 'll', 'ck', 'ng', 'nk', 'x'];
+
+const VOWEL_CONSONANT_E_CONSONANTS: Strings = ['d', 'k', 'f', 'l', 'm', 'n', 'p', 't', 'v'];
 
 export function buildWord(): string {
-  return [sample(START_SOUNDS), sample(MIDDLE_SOUNDS), sample(END_SOUNDS)].join('');
+  let wordParts: Strings;
+  if (Math.random() < 0.1) {
+    // only do vowel-consonant-e combo 1/10th of the time
+    wordParts = [
+      sample(START_SOUNDS)!,
+      sample(VOWELS)!,
+      sample(VOWEL_CONSONANT_E_CONSONANTS)!,
+      'e',
+    ];
+  } else {
+    wordParts = [sample(START_SOUNDS)!, sample(MIDDLE_SOUNDS)!, sample(END_SOUNDS)!];
+  }
+
+  return wordParts.join('');
 }
