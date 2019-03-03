@@ -1,4 +1,4 @@
-import { Strings } from './models';
+import { Strings, WordType } from './models';
 import { sample } from 'lodash-es';
 
 const VOWELS: Strings = ['a', 'e', 'i', 'o', 'u'];
@@ -25,6 +25,8 @@ const CONSONANTAL_DIGRAPHS: Strings = [
   'tw',
 ];
 
+const START_ONLY_SOUNDS: Strings = ['j', 'qu', ''];
+
 const SIMPLE_SOUNDS: Strings = [
   'm',
   's',
@@ -41,21 +43,15 @@ const SIMPLE_SOUNDS: Strings = [
   'h',
   'sh',
   'r',
-  'j',
   'v',
   'y',
   'w',
   'th',
   'z',
   'ch',
-  'qu',
 ];
 
-const START_SOUNDS: Strings = [
-  ...SIMPLE_SOUNDS,
-  ...CONSONANTAL_DIGRAPHS,
-  '', // Some words can start with vowel sounds
-];
+const START_SOUNDS: Strings = [...START_ONLY_SOUNDS, ...SIMPLE_SOUNDS, ...CONSONANTAL_DIGRAPHS];
 
 const MIDDLE_SOUNDS: Strings = [
   ...VOWELS,
@@ -82,19 +78,39 @@ const END_SOUNDS: Strings = [...SIMPLE_SOUNDS, 'ss', 'll', 'ck', 'ng', 'nk', 'x'
 
 const VOWEL_CONSONANT_E_CONSONANTS: Strings = ['d', 'k', 'f', 'l', 'm', 'n', 'p', 't', 'v'];
 
+const COMPOUND_ENDINGS: Strings = ['are', 'er', 'ow', 'ew', 'ire', 'ear', 'ure'];
+
 export function buildWord(): string {
   let wordParts: Strings;
-  if (Math.random() < 0.1) {
-    // only do vowel-consonant-e combo 1/10th of the time
-    wordParts = [
-      sample(START_SOUNDS)!,
-      sample(VOWELS)!,
-      sample(VOWEL_CONSONANT_E_CONSONANTS)!,
-      'e',
-    ];
-  } else {
-    wordParts = [sample(START_SOUNDS)!, sample(MIDDLE_SOUNDS)!, sample(END_SOUNDS)!];
+  switch (getWordTypeAtRandom()) {
+    case WordType.Simple:
+      wordParts = [sample(START_SOUNDS)!, sample(MIDDLE_SOUNDS)!, sample(END_SOUNDS)!];
+      break;
+    case WordType.VowelConsonantE:
+      wordParts = [
+        sample(START_SOUNDS)!,
+        sample(VOWELS)!,
+        sample(VOWEL_CONSONANT_E_CONSONANTS)!,
+        'e',
+      ];
+      break;
+    case WordType.ComplexEnding:
+      wordParts = [sample(START_SOUNDS)!, sample(COMPOUND_ENDINGS)!];
+      break;
   }
 
-  return wordParts.join('');
+  return wordParts!.join('');
+}
+
+function getWordTypeAtRandom(): WordType {
+  let wordType: WordType;
+  const randomNumber = Math.random();
+  if (randomNumber < 0.1) {
+    wordType = WordType.VowelConsonantE;
+  } else if (randomNumber < 0.2) {
+    wordType = WordType.ComplexEnding;
+  } else {
+    wordType = WordType.Simple;
+  }
+  return wordType;
 }

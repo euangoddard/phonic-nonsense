@@ -16,8 +16,8 @@ export class Shake {
   constructor(options?: Partial<ShakeOptions>) {
     this.options = {
       ...(options || {}),
-      threshold: 15, //default velocity threshold for shake to register
-      timeout: 1000, //default interval between events
+      threshold: 15, // default velocity threshold for shake to register
+      timeout: 1000, // default interval between events
     };
     this.createCustomEvent();
   }
@@ -49,7 +49,7 @@ export class Shake {
     this.event.initEvent('shake', true, true);
   }
 
-  private handleEvent(event: DeviceMotionEvent): void {
+  handleEvent(event: DeviceMotionEvent): void {
     if (event.type === 'devicemotion') {
       this.devicemotion(event);
     }
