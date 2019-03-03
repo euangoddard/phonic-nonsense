@@ -1,7 +1,7 @@
 import { buildWord } from './words';
 import { Shake } from './shake';
 import { Strings } from './models';
-import { debounce } from 'lodash-es';
+import { debounce, includes } from 'lodash-es';
 
 const RELEVANT_KEYBOARD_EVENTS: Strings = ['Space', 'Enter'];
 
@@ -35,7 +35,7 @@ function updateWord(): void {
 }
 
 function checkKeyEvent(event: KeyboardEvent): void {
-  if (RELEVANT_KEYBOARD_EVENTS.includes(event.code)) {
+  if (includes(RELEVANT_KEYBOARD_EVENTS, event.code)) {
     updateWord();
   }
 }
