@@ -33,3 +33,61 @@ p {
   line-height: 1.5;
   padding: 2rem;
 }
+
+.hint {
+  position: absolute;
+  z-index: 1;
+  bottom: 2rem;
+  margin: 0 auto;
+}
+
+button {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  background: #03a9f4;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 5vmin;
+  border-radius: 4px;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+  background: #039be5;
+}
+
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+#hint-phonics {
+  display: flex;
+}
+
+.phonic {
+  color: #fff;
+  background-color: #0091EA;
+  font-size: 10vmin;
+  line-height: 1;
+  border-radius: 10vmin;
+  padding: 2vmin 5vmin;
+  margin-right: 4px;
+}
+
+.phonic:last-child {
+  margin-right: 0;
+}
+
+.hidden {
+  display: none !important;
+}

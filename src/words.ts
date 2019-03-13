@@ -80,7 +80,7 @@ const VOWEL_CONSONANT_E_CONSONANTS: Strings = ['d', 'k', 'f', 'l', 'm', 'n', 'p'
 
 const COMPOUND_ENDINGS: Strings = ['are', 'er', 'ow', 'ew', 'ire', 'ear', 'ure'];
 
-export function buildWord(): string {
+export function buildWordParts(): Strings {
   let wordParts: Strings;
   switch (getWordTypeAtRandom()) {
     case WordType.Simple:
@@ -99,7 +99,7 @@ export function buildWord(): string {
       break;
   }
 
-  return wordParts!.join('');
+  return wordParts!;
 }
 
 function getWordTypeAtRandom(): WordType {
