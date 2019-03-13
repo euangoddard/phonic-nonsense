@@ -99,7 +99,7 @@ export function buildWordParts(): Strings {
       break;
   }
 
-  return wordParts!;
+  return wordParts!.filter(p => !!p);
 }
 
 function getWordTypeAtRandom(): WordType {
