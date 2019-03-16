@@ -7,7 +7,16 @@ import { hideElement, listen, showElement } from './dom';
 const RELEVANT_KEYBOARD_EVENTS: Strings = ['Space', 'Enter'];
 
 (function() {
+  const triggerElement = document.querySelector('#hint-trigger') as HTMLElement;
+
   document.addEventListener('click', updateWord, false);
+  document.addEventListener('touchstart', event => {
+    event.preventDefault();
+    if (event.target === triggerElement) {
+      return;
+    }
+    updateWord();
+  }, {passive: false});
 
   const shaker = new Shake();
   shaker.start();
@@ -22,7 +31,7 @@ const RELEVANT_KEYBOARD_EVENTS: Strings = ['Space', 'Enter'];
     false,
   );
 
-  const triggerElement = document.querySelector('#hint-trigger') as HTMLElement;
+
   const hintPhonicsElement = document.querySelector('#hint-phonics') as HTMLElement;
   const wordElement = document.querySelector('h1') as HTMLElement;
   listen(
