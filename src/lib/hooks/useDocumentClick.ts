@@ -3,7 +3,7 @@ import { MutableRef } from "preact/hooks";
 
 export const useDocumentClick = (
   callback: VoidFunction,
-  excludedRef?: MutableRef<HTMLElement | null>
+  excludedRef?: MutableRef<HTMLElement | null>,
 ): void => {
   useEffect(() => {
     document.addEventListener("click", callback, false);

@@ -48,7 +48,11 @@ const SelectDifficulty: FunctionalComponent<SelectDifficultyProps> = ({
           </option>
         ))}
       </select>
-      <button class="pin-bottom" type="button" onClick={() => setStep(Steps.Ready)}>
+      <button
+        class="pin-bottom"
+        type="button"
+        onClick={() => setStep(Steps.Ready)}
+      >
         Ready!
       </button>
     </div>
