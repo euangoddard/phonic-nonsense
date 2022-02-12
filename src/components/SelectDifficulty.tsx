@@ -14,11 +14,11 @@ const difficultyOptions: readonly DifficultyOption[] = [
   },
   {
     value: Difficulties.Set2,
-    label: "Set 2 phonics",
+    label: "Set 1 & 2 phonics",
   },
   {
     value: Difficulties.Set3,
-    label: "Set 3 phonics",
+    label: "Set 1, 2 & 3 phonics",
   },
 ];
 
